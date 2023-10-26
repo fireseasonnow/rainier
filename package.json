@@ -1,12 +1,14 @@
 {
   "name": "rainier",
-  "type": "module",
   "devDependencies": {
     "@types/node": "latest",
     "@types/react": "latest",
+    "autoprefixer": "latest",
     "bun-types": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
+    "postcss": "latest",
+    "tailwindcss": "latest",
     "typescript": "latest"
   },
   "dependencies": {
