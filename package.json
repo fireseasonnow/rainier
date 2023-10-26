@@ -1,14 +1,23 @@
 {
   "name": "rainier",
-  "module": "index.ts",
   "type": "module",
   "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
     "bun-types": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
     "typescript": "latest"
   },
   "dependencies": {
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   }
 }

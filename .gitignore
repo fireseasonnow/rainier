@@ -111,6 +111,7 @@ web_modules/
 
 .next
 out
+next-env.d.ts
 
 # Nuxt.js build / generate output
 
@@ -174,3 +175,5 @@ dist
 # Finder (MacOS) folder config
 .DS_Store
 
+# npm lock file
+package-lock.json
