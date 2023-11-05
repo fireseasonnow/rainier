@@ -1,21 +1,21 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "eslint:recommended"
-  ],
-  "rules": {
-    "indent": [
-      "error",
-      4
+    "extends": [
+        "next/core-web-vitals",
+        "eslint:recommended"
     ],
-    "quotes": [
-      "error",
-      "double"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ],
-    "no-multiple-empty-lines": "error"
-  }
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-multiple-empty-lines": "error"
+    }
 }
