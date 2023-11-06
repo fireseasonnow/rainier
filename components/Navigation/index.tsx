@@ -8,7 +8,7 @@ const navigationItems = ["ABOUT", "BOOKS", "AUTHORS", "CONTACT"];
 export default () => {
   return (
     <header className="top-0 sticky z-10 bg-white">
-      <nav className="h-24 flex text-orange-600 text-md shadow-sm">
+      <nav className="h-24 flex text-orange-600 text-md shadow-sm justify-center">
         <div className="flex gap-6 items-center px-6 max-sm:px-3">
           <div className="flex gap-3 items-center">
             <MobileNavButton />
