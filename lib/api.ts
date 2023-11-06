@@ -12,7 +12,7 @@ const BOOK_GRAPHQL_FIELDS = `
     }
     year
     genres
-`
+`;
 
 const AUTHOR_GRAPHQL_FIELDS = `
     firstName
@@ -28,28 +28,28 @@ const AUTHOR_GRAPHQL_FIELDS = `
         width
     }
     nationality
-`
+`;
 
 async function fetchGraphQL(query: string): Promise<any> {
     return fetch(
         `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`,
         {
-            method: 'POST',
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
                 Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN}`,
             },
             body: JSON.stringify({ query })
         }
-    ).then((response) => response.json())
+    ).then((response) => response.json());
 }
 
 function extractBook(fetchResponse: any): any {
-    return fetchResponse?.data?.bookCollection?.items?.[0]
+    return fetchResponse?.data?.bookCollection?.items?.[0];
 }
 
 function extractAuthor(fetchResponse: any): any[] {
-    return fetchResponse?.data?.authorCollection?.items?.[0]
+    return fetchResponse?.data?.authorCollection?.items?.[0];
 }
 
 export async function getBookBySlug(slug: string | null): Promise<any> {
@@ -61,9 +61,9 @@ export async function getBookBySlug(slug: string | null): Promise<any> {
                 }
             }
         }`
-    )
+    );
 
-    return extractBook(entry)
+    return extractBook(entry);
 }
 
 export async function getAuthorBySlug(slug: string | null): Promise<any> {
@@ -75,8 +75,8 @@ export async function getAuthorBySlug(slug: string | null): Promise<any> {
                 }
             }
         }`
-    )
+    );
 
-    return extractAuthor(entry)
+    return extractAuthor(entry);
 }
 
