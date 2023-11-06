@@ -1,3 +1,5 @@
+import type { Author, AuthorResponse, Book, BookResponse } from "../types/content-types";
+
 const BOOK_GRAPHQL_FIELDS = `
     title
     author {
@@ -30,30 +32,42 @@ const AUTHOR_GRAPHQL_FIELDS = `
     nationality
 `;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function fetchGraphQL(query: string): Promise<any> {
-    return fetch(
-        `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`,
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN}`,
-            },
-            body: JSON.stringify({ query })
+    try {
+        const res = await fetch(
+            `https://graphql.contentful.com/content/v1/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID}`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN}`,
+                },
+                body: JSON.stringify({ query })
+            });
+
+        if (res.ok) {
+            return res.json();
         }
-    ).then((response) => response.json());
+
+        console.error("Network response was not ok");
+        return null;
+    } catch (err) {
+        console.error("Error fetching data from GraphQL:", err);
+        return null;
+    }
 }
 
-function extractBook(fetchResponse: any): any {
+function extractBook(fetchResponse: BookResponse): Book {
     return fetchResponse?.data?.bookCollection?.items?.[0];
 }
 
-function extractAuthor(fetchResponse: any): any[] {
+function extractAuthor(fetchResponse: AuthorResponse): Author {
     return fetchResponse?.data?.authorCollection?.items?.[0];
 }
 
-export async function getBookBySlug(slug: string | null): Promise<any> {
-    const entry = await fetchGraphQL(
+export async function getBookBySlug(slug: string | null): Promise<Book> {
+    const entry: BookResponse = await fetchGraphQL(
         `query {
             bookCollection(where: { slug: "${slug}" }) {
                 items {
@@ -66,8 +80,8 @@ export async function getBookBySlug(slug: string | null): Promise<any> {
     return extractBook(entry);
 }
 
-export async function getAuthorBySlug(slug: string | null): Promise<any> {
-    const entry = await fetchGraphQL(
+export async function getAuthorBySlug(slug: string | null): Promise<Author> {
+    const entry: AuthorResponse = await fetchGraphQL(
         `query {
             authorCollection(where: { slug: "${slug}" }) {
                 items {

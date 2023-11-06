@@ -4,15 +4,11 @@ import { useEffect, useState } from "react";
 import { getBookBySlug } from "../../../lib/api.ts";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-
-type Props = {
-    title?: string
-    img?: any
-}
+import type { Book } from "../../../types/content-types";
 
 export default function Page() {
     const pathname = usePathname();
-    const [book, setBook] = useState<Props>({});
+    const [book, setBook] = useState<Book>({});
 
     const { title, img } = book;
 
@@ -40,11 +36,13 @@ export default function Page() {
 
     return (<>
         <h1 className="text-3xl font-bold underline">{`Hello book ${title}!`}</h1>
-        <Image
-            src={img.url}
-            width={img.width}
-            height={img.height}
-            alt={img.title}
-        />
+
+        {img &&
+            <Image
+                src={img.url}
+                width={img.width}
+                height={img.height}
+                alt={img.title}
+            />}
     </>);
 }
