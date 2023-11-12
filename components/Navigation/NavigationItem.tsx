@@ -1,16 +1,23 @@
+"use client";
+
 interface Props {
   name: string;
-  onClick: () => void;
+  isActive: boolean
+  onClick: () => void
 }
 
 const NavigationItem = (props: Props) => {
-    const { name } = props;
+    const { name, isActive, onClick } = props;
+ 
 
     return (
         <li>
             <a
-                className="block transition duration-150 ease-in-out hover:text-red-800 focus:text-red-800 [&.active]:text-red-800"
+                className={`block transition duration-150 ease-in-out ${
+                    isActive ? "underline" : "hover:underline focus:text-underline"
+                }`}
                 href="#!"
+                onClick={onClick}
             >
                 {name}
             </a>

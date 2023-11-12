@@ -5,7 +5,7 @@ const MobileNavButton = () => {
             className="border-0 bg-transparent py-2 leading-none transition-shadow duration-150 ease-in-out hover:text-black focus:text-black lg:hidden"
             aria-label="Navigation"
         >
-            <span className="[&>svg]:w-12 max-lg:[&>svg]:w-6">
+            <span className="[&>svg]:w-24 max-lg:[&>svg]:w-12">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
