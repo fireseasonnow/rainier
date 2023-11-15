@@ -14,7 +14,9 @@ const NavigationItem = (props: Props) => {
         <li>
             <a
                 className={`block transition duration-150 ease-in-out ${
-                    isActive ? "underline" : "hover:underline focus:text-underline"
+                    isActive
+                        ? "border-b-2 border-orange-500 text-orange-500"
+                        : "hover:border-b-2 hover:border-orange-500 focus:border-b-2 focus:border-orange-500 hover:scale-110 hover:text-orange-500"
                 }`}
                 href="#!"
                 onClick={onClick}
