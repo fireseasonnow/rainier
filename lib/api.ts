@@ -1,4 +1,4 @@
-import type { Author, AuthorResponse, Book, BookResponse } from "../types/content-types";
+import type { Author, AuthorResponse, Book, BookResponse } from "@/types/content-types";
 
 const BOOK_GRAPHQL_FIELDS = `
     title
@@ -62,6 +62,10 @@ function extractBook(fetchResponse: BookResponse): Book {
     return fetchResponse?.data?.bookCollection?.items?.[0];
 }
 
+function extractBookTotal(fetchResponse: BookResponse): number {
+    return fetchResponse?.data?.bookCollection?.total;
+}
+
 function extractAuthor(fetchResponse: AuthorResponse): Author {
     return fetchResponse?.data?.authorCollection?.items?.[0];
 }
@@ -70,6 +74,35 @@ export async function getBookBySlug(slug: string | null): Promise<Book> {
     const entry: BookResponse = await fetchGraphQL(
         `query {
             bookCollection(where: { slug: "${slug}" }) {
+                items {
+                    ${BOOK_GRAPHQL_FIELDS}
+                }
+            }
+        }`
+    );
+
+    return extractBook(entry);
+}
+
+async function getBookTotal(): Promise<number> {
+    const entry: BookResponse = await fetchGraphQL(
+        `query {
+            bookCollection {
+                total
+            }
+        }`
+    );
+
+    return extractBookTotal(entry);
+}
+
+export async function getBookRandom(): Promise<Book> {
+    const bookTotal = await getBookTotal();
+    const randomNumber = getRandomNumber(bookTotal);
+
+    const entry: BookResponse = await fetchGraphQL(
+        `query {
+            bookCollection(skip: ${randomNumber - 1}, limit: ${randomNumber}) {
                 items {
                     ${BOOK_GRAPHQL_FIELDS}
                 }
@@ -93,4 +126,14 @@ export async function getAuthorBySlug(slug: string | null): Promise<Author> {
 
     return extractAuthor(entry);
 }
+
+const getRandomNumber = (max: number): number => {
+    let randomNumber = 0;
+
+    while (randomNumber === 0) {
+        randomNumber = Math.floor(Math.random() * max) + 1;
+    }
+
+    return randomNumber;
+};
 

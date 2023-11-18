@@ -1,3 +1,12 @@
-export default function Page() {
-    return <h1 className="text-3xl font-bold underline">Hello, Next.js!</h1>;
+import { Suspense } from "react";
+import Book from "@/components/Book";
+
+export default function Posts() {
+    return (
+        <section>
+            <Suspense fallback={<p>Loading book...</p>}>
+                <Book />
+            </Suspense>
+        </section>
+    );
 }

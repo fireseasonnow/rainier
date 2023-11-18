@@ -39,13 +39,14 @@ export type AuthorCollectionItems = {
 }
 
 export type BookResponse = {
-    data: BookCollection
+    data: BookCollectionData
+}
+
+export type BookCollectionData = {
+    bookCollection: BookCollection
 }
 
 export type BookCollection = {
-    bookCollection: BookCollectionItems
-}
-
-export type BookCollectionItems = {
-    items: Book[]
+    items: Book[],
+    total: number
 }
