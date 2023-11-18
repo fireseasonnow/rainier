@@ -1,36 +1,10 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import { getBookRandom } from "@/lib/api";
 import type { Book } from "@/types/content-types";
+import { getBookRandom } from "@/lib/api";
+import { blurDataURL } from "utils/image";
 
-export default function Book() {
-    const [book, setBook] = useState<Book>({});
-
-    const { title, img } = book;
-
-    useEffect(() => {
-        let ignore = false;
-
-        async function startFetching() {
-            const json = await getBookRandom();
-
-            if (!ignore) {
-                setBook(json);
-            }
-        }
-
-        startFetching();
-
-        return () => {
-            ignore = true;
-        };
-    }, []);
-
-    if (!Object.keys(book).length) {
-        return null;
-    }
+export default async function Book() {
+    const { title, img }: Book = await getBookRandom();
 
     return (
         <>
@@ -42,6 +16,8 @@ export default function Book() {
                     width={img.width}
                     height={img.height}
                     alt={img.title}
+                    placeholder="blur"
+                    blurDataURL={blurDataURL}
                 />}
         </>
     );
