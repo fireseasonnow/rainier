@@ -4,6 +4,12 @@
         "paths": {
             "@/components/*": [
                 "components/*"
+            ],
+            "@/lib/*": [
+                "lib/*"
+            ],
+            "@/types/*": [
+                "types/*"
             ]
         },
         "lib": [
