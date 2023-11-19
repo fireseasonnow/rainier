@@ -9,7 +9,7 @@ const MobileNavButton = (props: Props) => {
 
     return (
         <button
-            className="border-0 bg-transparent py-2 leading-none transition-shadow duration-150 ease-in-out md:hidden hover:text-orange-500"
+            className="border-0 bg-transparent py-2 leading-none transition-shadow duration-150 ease-in-out lg:hidden hover:text-orange-500"
             aria-label="Navigation"
             onClick={onClick}
         >
