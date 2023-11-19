@@ -19,7 +19,7 @@ type RootLayout = {
 export default function RootLayout({ children }: RootLayout) {
     return (
         <html lang="en" className={interTight.className}>
-            <body>{children}</body>
+            <body className="bg-amber-50 text-orange-600">{children}</body>
         </html>
     );
 }
