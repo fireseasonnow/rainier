@@ -21,5 +21,8 @@ export default {
             },
             { values: theme("textShadow") }
         );
-    })]
+    })],
+    future: {
+        hoverOnlyWhenSupported: true,
+    },
 } satisfies Config;
