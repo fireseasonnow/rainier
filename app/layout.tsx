@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     title: "Rainier app",
 };
 
-export default function RootLayout({
-    children,
-}: {
+type RootLayout = {
     children: ReactNode
-}) {
+}
+
+export default function RootLayout({ children }: RootLayout) {
     return (
         <html lang="en" className={interTight.className}>
             <body>{children}</body>
