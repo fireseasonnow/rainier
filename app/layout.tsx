@@ -1,7 +1,9 @@
+import "./globals.css";
 import { ReactNode } from "react";
 import { Metadata } from "next";
 import { Inter_Tight } from "next/font/google";
 import "./globals.css";
+import Navigation from "../components/Navigation";
 
 const interTight = Inter_Tight({
     subsets: ["latin"],
@@ -13,13 +15,18 @@ export const metadata: Metadata = {
 };
 
 type RootLayout = {
-    children: ReactNode
+    children: ReactNode | ReactNode[]
 }
 
 export default function RootLayout({ children }: RootLayout) {
     return (
         <html lang="en" className={interTight.className}>
-            <body className="bg-amber-50 text-orange-600">{children}</body>
+            <body className="bg-amber-50 text-orange-600">   
+                <>
+                    <Navigation />
+                    {children}
+                </>
+            </body>
         </html>
     );
 }
