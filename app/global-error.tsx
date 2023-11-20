@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-export default function Error({
+export default function GlobalError({
     error,
     reset,
 }: {
@@ -14,9 +14,11 @@ export default function Error({
     }, [error]);
 
     return (
-        <div>
-            <h2>Something went wrong!</h2>
-            <button onClick={() => reset()}>Try again</button>
-        </div>
+        <html lang="en">
+            <body>
+                <h2>Something went wrong!</h2>
+                <button onClick={() => reset()}>Try again</button>
+            </body>
+        </html>
     );
 }

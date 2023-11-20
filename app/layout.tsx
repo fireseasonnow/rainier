@@ -1,11 +1,27 @@
-import Navigation from "../components/Navigation";
 import "./globals.css";
 import { ReactNode } from "react";
+import { Metadata } from "next";
+import { Inter_Tight } from "next/font/google";
+import "./globals.css";
+import Navigation from "../components/Navigation";
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+const interTight = Inter_Tight({
+    subsets: ["latin"],
+    display: "swap",
+});
+
+export const metadata: Metadata = {
+    title: "Rainier app",
+};
+
+type RootLayout = {
+    children: ReactNode | ReactNode[]
+}
+
+export default function RootLayout({ children }: RootLayout) {
     return (
-        <html lang="en">
-            <body className="bg-orange-50 p-4">
+        <html lang="en" className={interTight.className}>
+            <body className="bg-amber-50 text-orange-600">   
                 <>
                     <Navigation />
                     {children}
