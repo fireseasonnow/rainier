@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Book } from "@/types/content-types";
 import { getBookRandom } from "@/lib/api";
-import { blurDataURL } from "utils/image";
+import { blurDataURL } from "utils/imageUtils";
 
 export default async function Book() {
     const { title, author, img }: Book = await getBookRandom();
