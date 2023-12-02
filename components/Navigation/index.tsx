@@ -36,7 +36,7 @@ const Navigation = () => {
 
     return (
         <header className="sticky top-0 z-10 lg:m-5">
-            <nav className="flex h-32 border-b-2 border-orange-600 text-xl">
+            <nav className="flex h-[90px] border-b-2 border-orange-600 text-xl">
                 <div className="flex h-full w-full justify-end px-6 max-sm:px-3 lg:justify-center">
                     <MobileNavButton isOpen={isMobileMenuOpen} onClick={handleMobileMenuToggle} />
 

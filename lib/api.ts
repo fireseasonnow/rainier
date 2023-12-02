@@ -5,6 +5,7 @@ const BOOK_GRAPHQL_FIELDS = `
     author {
         firstName
         lastName
+        slug
     }
     img {
         title
@@ -14,6 +15,7 @@ const BOOK_GRAPHQL_FIELDS = `
     }
     year
     genres
+    slug
 `;
 
 const AUTHOR_GRAPHQL_FIELDS = `
@@ -30,6 +32,7 @@ const AUTHOR_GRAPHQL_FIELDS = `
         width
     }
     nationality
+    slug
 `;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
