@@ -35,13 +35,13 @@ const Navigation = () => {
     });
 
     return (
-        <header className="sticky top-0 z-10 lg:m-5">
+        <header className="sticky top-0 z-10">
             <nav className="flex h-[90px] border-b-2 border-orange-600 text-xl">
                 <div className="flex h-full w-full justify-end px-6 max-sm:px-3 lg:justify-center">
                     <MobileNavButton isOpen={isMobileMenuOpen} onClick={handleMobileMenuToggle} />
 
                     <div className={mobileNavDropdownClasses}>
-                        <ul className="absolute left-0 top-0 mt-32 flex h-screen w-full flex-col items-center gap-4 bg-orange-600 pt-10 text-orange-100">
+                        <ul className="absolute left-0 top-0 mt-[90px] flex h-screen w-full flex-col items-center gap-4 bg-orange-600 pt-10 text-orange-100">
                             {mappedNavItems}
                         </ul>
                     </div>
