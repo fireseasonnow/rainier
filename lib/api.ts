@@ -16,6 +16,7 @@ const BOOK_GRAPHQL_FIELDS = `
     year
     genres
     slug
+    description
 `;
 
 const AUTHOR_GRAPHQL_FIELDS = `
@@ -33,6 +34,7 @@ const AUTHOR_GRAPHQL_FIELDS = `
     }
     nationality
     slug
+    description
 `;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

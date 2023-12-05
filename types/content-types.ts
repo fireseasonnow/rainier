@@ -8,6 +8,7 @@ export type Author = {
     bornDate?: string;
     diedDate?: string;
     slug?: string;
+    description?: string;
 }
 
 export type Book = {
@@ -17,6 +18,7 @@ export type Book = {
     year?: number;
     genres?: string[];
     slug?: string;
+    description?: string;
 }
 
 export type Image = {

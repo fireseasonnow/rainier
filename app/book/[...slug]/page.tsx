@@ -10,7 +10,7 @@ export default function Page() {
     const pathname = usePathname();
     const [book, setBook] = useState<Book>({});
 
-    const { title, img } = book;
+    const { title, img, description } = book;
 
     useEffect(() => {
         let ignore = false;
@@ -36,6 +36,7 @@ export default function Page() {
 
     return (<>
         <h1 className="text-3xl font-bold underline">{`Hello book ${title}!`}</h1>
+        <p>{description}</p>
 
         {img &&
             <Image
