@@ -49,7 +49,6 @@ async function fetchGraphQL(query: string): Promise<any> {
                     Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN}`,
                 },
                 body: JSON.stringify({ query }),
-                cache: "no-store"
             });
 
         if (res.ok) {
